@@ -42,8 +42,8 @@ Example of a measurement for non-MCS kernel. Run #1 on Sabre (file sabre-nomcs-o
    - Armv8-A
 
 The mentioned "every 8-th" pattern was not found here. On the contrary, every 8-th sample was few cycles less then neighbouring ones.</br>
-"Tail pattern". 2 - 3 tailing samples were considerably higher than others for both MCS and non-MCS kernels. Further experiments showed that the increased tailing samples don't depend on number of measured samples, the "tail" always takes place.
-"Head pattern". We see up to 4 first increased measurements for MCS kernel, but it happened in 2 cases: 1st and 9th runs. As for non-MCS kernels there are always 21-23 first increased measurements take place before the process stabilizes.
+"Tail pattern": 2 - 3 tailing samples were considerably higher than others for both MCS and non-MCS kernels. Further experiments showed that the increased tailing samples don't depend on number of measured samples, the "tail" always takes place.
+"Head pattern". We see up to 4 first increased measurements for MCS kernel, but it happened in 2 cases: 1st and 9th runs out of 10. As for non-MCS kernels there are always 21-23 first increased measurements take place before the process stabilizes.
 
 Example of a measurement for MCS kernel. Run #1 on tx1a (file tx1a-mcs-old-1.log)
 
