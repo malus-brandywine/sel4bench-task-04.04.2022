@@ -1,12 +1,18 @@
 
 #### 3. Developments
 
+
+
+##### 3.1 Loop delay to address "every 8-th" pattern
+
+</br>
+
 The solution (by Shane Kadish) to add emply loop delay into measuring loop rectified "every 8-th" pattern for Armv7
 and improved latencies for Armv8.</br>
 
 The code of the empty loop: `for( volatile int j = 0; j < 150; j++){}`
 
-Further experiments showed that it's the combination of stores/loads produced by this code engaded cache maintenance
+Further experiments showed that it's the combination of stores/loads issued by this code engaded cache 
 operations. It has nothing to do with clock cycles elapsed between recording current sample and starting the new measurement cycle.
 
 The code with the "delay" (sel4bench/apps/signal/src/main.c):
@@ -41,12 +47,42 @@ void low_prio_signal_fn(int argc, char **argv)
 ```
 </br>
 
+The raw results published in `data-[platform]-...` folders of this reposotory. You need files that contain `old-delay` in their names.
+(I took measurements with the empty loop switched on for other platforms as well.)
+
 </br>
 
-I took measurements with the "delay" switched on for other platforms. The raw results published in
-`data-riscv-...` and `data-x86_64-...` folders of this reposotory. Files contain `old-delay` in their names.
+
+##### 3.2 Early Processing to address "every 8-th" pattern
+
+</br>
+
+Early processing methodology described in the "Task" section was implemented and showed results the same as "Loop delay" for Armv7-A
+and somewhat worse than "Loop delay" for Armv8-A.
+
+Important factor when choosing which methodology to improve: the more code and the more branches is contained inside the measuring loop
+the more instruction cache events affect measured latencies.
+
+The raw results published in `data-[platform]-...` folders of this reposotory. You need files that contain `new` in their names.
+
+</br>
+
+##### 3.3 "Untailing" to address "Tail pattern" for Armv8-A
+
+</br>
+
+I added a parameter "number of tail samples to skip" and measured latencies.  
 
 
+
+
+
+
+Parameters of the 10 runs are collected into the tables:
+
+   - [Tables for Arm](https://github.com/malus-brandywine/sel4bench-task-04.04.2022/blob/main/data-tables/MethodologiesComparison-Arm-03.11.2022-tables.pdf)
+   - [Tables for Risc-V](https://github.com/malus-brandywine/sel4bench-task-04.04.2022/blob/main/data-tables/MethodologiesComparison-RISCV-03.15.2022-tables.pdf)
+   - [Tables for x86_64](https://github.com/malus-brandywine/sel4bench-task-04.04.2022/blob/main/data-tables/MethodologiesComparison-x86_64-03.16.2022-tables.pdf)
 
 
 
