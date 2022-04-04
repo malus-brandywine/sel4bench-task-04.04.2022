@@ -1,0 +1,130 @@
+co
+^Eco
+[Enter `^Ec?' for help]
+[up]
+
+RISC-V # 
+
+U-Boot 2018.09-g6f6e014-dirty (Jul 04 2019 - 12:40:44 +1000)
+
+DRAM:  2 GiB
+MMC:   
+In:    serial
+Out:   serial
+Err:   serial
+Net:   gmac0
+RISC-V # setenv autoload no ; dhcp ; tftp 0x80000000 /hifive1/sel4-image; go 0x80000000
+setenv autoload no ; dhcp ; tftp 0x80000000 /hifive1/sel4-image; go 0x80000000
+gmac0: PHY present at 0
+gmac0: Starting autonegotiation...
+gmac0: Autonegotiation complete
+gmac0: link up, 1000Mbps full-duplex (lpa: 0x3800)
+BOOTP broadcast 1
+BOOTP broadcast 2
+BOOTP broadcast 3
+BOOTP broadcast 4
+BOOTP broadcast 5
+DHCP client bound to address 172.16.1.34 (4762 ms)
+gmac0: PHY present at 0
+gmac0: Starting autonegotiation...
+gmac0: Autonegotiation complete
+gmac0: link up, 1000Mbps full-duplex (lpa: 0x3800)
+Using gmac0 device
+TFTP from server 172.16.0.2; our IP address is 172.16.1.34
+Filename '/hifive1/sel4-image'.
+Load address: 0x80000000
+Loading: *#################################################################
+	 #################################################################
+	 ##############################################################
+	 554.7 KiB/s
+done
+Bytes transferred = 2805384 (2ace88 hex)
+## Starting application at 0x80000000 ...
+
+OpenSBI v0.8
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|____/_____|
+        | |
+        |_|
+
+Platform Name       : SiFive Freedom U540
+Platform Features   : timer,mfdeleg
+Platform HART Count : 4
+Boot HART ID        : 1
+Boot HART ISA       : rv64imafdcsu
+BOOT HART Features  : pmp,scounteren,mcounteren
+BOOT HART PMP Count : 16
+Firmware Base       : 0x80000000
+Firmware Size       : 104 KB
+Runtime SBI Version : 0.2
+
+MIDELEG : 0x0000000000000222
+MEDELEG : 0x000000000000b109
+PMP0    : 0x0000000080000000-0x000000008001ffff (A)
+PMP1    : 0x0000000000000000-0x0000007fffffffff (A,R,W,X)
+ELF-loader started on (HART 1) (NODES 1)
+  paddr=[80200000..802b3027]
+Looking for DTB in CPIO archive...found at 80218148.
+Loaded DTB from 80218148.
+   paddr=[84015000..84017fff]
+ELF-loading image 'kernel' to 84000000
+  paddr=[84000000..84014fff]
+  vaddr=[ffffffff84000000..ffffffff84014fff]
+  virt_entry=ffffffff84000000
+ELF-loading image 'sel4benchapp' to 84018000
+  paddr=[84018000..840f0fff]
+  vaddr=[10000..e8fff]
+  virt_entry=29878
+Enabling MMU and paging
+Jumping to kernel-image entry point...
+
+
+[;1m[37mse[32mL4[37m Benchmark[0m
+[32m==============[37m
+
+Switching to a safer, bigger stack... 
+Setting up global fault handler...
+Failed to allocate object of size 274877906944, error 1
+Failed to allocate object of size 137438953472, error 1
+Failed to allocate object of size 68719476736, error 1
+Failed to allocate object of size 34359738368, error 1
+Failed to allocate object of size 17179869184, error 1
+Failed to allocate object of size 8589934592, error 1
+
+signal Benchmarks
+==============
+
+Range for vaddr 0x10001000 with 1 4k pages not reserved!
+Mapping new pages to extend brk region failed
+
+Range for vaddr 0x10001000 with 1 4k pages not reserved!
+Mapping new pages to extend brk region failed
+
+Range for vaddr 0x10001000 with 1 4k pages not reserved!
+Mapping new pages to extend brk region failed
+
+Range for vaddr 0x10001000 with 1 4k pages not reserved!
+Mapping new pages to extend brk region failed
+
+Range for vaddr 0x10001000 with 1 4k pages not reserved!
+Mapping new pages to extend brk region failed
+
+Range for vaddr 0x10001000 with 1 4k pages not reserved!
+Mapping new pages to extend brk region failed
+
+Range for vaddr 0x10001000 with 1 4k pages not reserved!
+Mapping new pages to extend brk region failed
+
+Range for vaddr 0x10001000 with 1 4k pages not reserved!
+Mapping new pages to extend brk region failed
+
+JSON OUTPUT
+[{"Benchmark": "Signal overhead", "Results": [{"Min": 3, "Max": 3, "Mean": 3.0, "Stddev": 0.0, "Variance": 0.0, "Mode": 3.0, "Median": 3.0, "1st quantile": 3.0, "3rd quantile": 3.0, "Samples": 100, "Raw results": [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]}]}, {"Benchmark": "Signal to high prio thread", "Results": [{"Min": 2433, "Max": 2606, "Mean": 2448.3200000000002, "Stddev": 16.453178133937246, "Variance": 268.0, "Mode": 2447.0, "Median": 2447.0, "1st quantile": 2447.0, "3rd quantile": 2447.0, "Samples": 100, "Raw results": [2462, 2446, 2446, 2446, 2446, 2446, 2446, 2449, 2606, 2444, 2436, 2433, 2446, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2478, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447]}]}, {"Benchmark": "Signal to low prio thread", "Results": [{"Min": 1165, "Max": 1215, "Mean": 1190.02, "Stddev": 25.106641239788214, "Variance": 624.03999999999996, "Mode": 1165.0, "Median": 1191.0, "1st quantile": 1165.0, "3rd quantile": 1215.0, "Samples": 100, "Raw results": [1165, 1215, 1165, 1215, 1167, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215, 1165, 1215]}]}, {"Benchmark": "Average signal to low prio thread", "Results": [{"Event": "L1 i-cache misses", "Min": 0, "Max": 0, "Mean": 0.0, "Stddev": 0.0, "Variance": 0.0, "Mode": 0.0, "Median": 0.0, "1st quantile": 0.0, "3rd quantile": 0.0, "Samples": 110, "Raw results": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"Event": "L1 d-cache misses", "Min": 1, "Max": 1, "Mean": 1.0, "Stddev": 0.0, "Variance": 0.0, "Mode": 1.0, "Median": 1.0, "1st quantile": 1.0, "3rd quantile": 1.0, "Samples": 110, "Raw results": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}, {"Event": "L1 i-tlb misses", "Min": 0, "Max": 0, "Mean": 0.0, "Stddev": 0.0, "Variance": 0.0, "Mode": 0.0, "Median": 0.0, "1st quantile": 0.0, "3rd quantile": 0.0, "Samples": 110, "Raw results": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"Event": "L1 d-tlb misses", "Min": 0, "Max": 0, "Mean": 0.0, "Stddev": 0.0, "Variance": 0.0, "Mode": 0.0, "Median": 0.0, "1st quantile": 0.0, "3rd quantile": 0.0, "Samples": 110, "Raw results": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}, {"Event": "Instructions", "Min": 1, "Max": 1, "Mean": 1.0, "Stddev": 0.0, "Variance": 0.0, "Mode": 1.0, "Median": 1.0, "1st quantile": 1.0, "3rd quantile": 1.0, "Samples": 110, "Raw results": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}, {"Event": "Branch mispredictions", "Min": 21, "Max": 34, "Mean": 22.363636363636363, "Stddev": 3.3373065005928182, "Variance": 11.036363636363637, "Mode": 21.0, "Median": 21.0, "1st quantile": 21.0, "3rd quantile": 22.0, "Samples": 110, "Raw results": [21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 32, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 34, 21, 33, 31, 33, 33, 29, 21, 21, 21, 31, 21, 21, 21, 21, 21, 21, 21, 21, 33, 28, 30, 21, 21, 21, 21, 21, 21, 32]}, {"Event": "Memory accesses", "Min": 1, "Max": 1, "Mean": 1.0, "Stddev": 0.0, "Variance": 0.0, "Mode": 1.0, "Median": 1.0, "1st quantile": 1.0, "3rd quantile": 1.0, "Samples": 110, "Raw results": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}, {"Event": "Cycle counter", "Min": 1189, "Max": 1231, "Mean": 1192.1181818181817, "Stddev": 6.7054681232777167, "Variance": 44.554545454545455, "Mode": 1189.0, "Median": 1191.0, "1st quantile": 1189.25, "3rd quantile": 1192.0, "Samples": 110, "Raw results": [1191, 1189, 1189, 1191, 1189, 1190, 1190, 1190, 1190, 1191, 1190, 1189, 1190, 1191, 1190, 1189, 1191, 1191, 1190, 1191, 1190, 1191, 1190, 1190, 1189, 1189, 1192, 1191, 1190, 1192, 1189, 1191, 1190, 1190, 1189, 1189, 1191, 1191, 1190, 1189, 1189, 1191, 1192, 1191, 1189, 1190, 1189, 1189, 1189, 1189, 1191, 1191, 1189, 1189, 1189, 1189, 1192, 1191, 1193, 1194, 1192, 1195, 1193, 1193, 1193, 1193, 1193, 1194, 1193, 1194, 1193, 1193, 1195, 1195, 1195, 1193, 1194, 1193, 1194, 1194, 1193, 1191, 1192, 1190, 1228, 1231, 1206, 1191, 1190, 1189, 1189, 1191, 1189, 1191, 1189, 1189, 1195, 1191, 1192, 1191, 1230, 1191, 1191, 1189, 1190, 1191, 1190, 1190, 1189, 1191]}]}]END JSON OUTPUT
+All is well in the universe.
+
+
+Fin
