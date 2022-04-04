@@ -1,4 +1,4 @@
-#### Task
+#### 1. Task
 
 In benchmark suite (sel4bench), benchmark "Signal to High Prio Thread" produces repeating pattern where every 8-th measurement
 is considerably higher than others and makes standard deviation 150-160 ccycles for MCS kernel and 170-190 ccycles for traditional one when run on Armv7-A platform (Sabre).
@@ -17,13 +17,17 @@ It would allow to calculate parameters variance, standard deviation and mean pos
 </br>
 
 
-#### Analysis of raw data
+#### 2. Analysis of raw data
 
-I made a check of the raw data for the available architectures. </br>Parameters of measurements: 10/100 (10 warm-up samples, 100 recorded samples)
+I made a check of the raw data for the available architectures.</br>
+
+Parameters of measurements: 10/100 (10 warm-up samples, 100 recorded samples)</br>
+Container seL4/seL4-CAmkES-L4v-dockerfiles: e9079c69284bd79d817dd6e823d56821459083b9</br>
+sel4bench-manifest: f05bf61609a2418075e66fd8f967b75da9d624a0
 
 </br>
 
-##### Armv7-A
+##### 2.1 Armv7-A
 
 The only problem found here was the mentioned "every 8-th" pattern. Other samples were dispersed from each other in a limited way. 
 No other appearant patterns were found.
@@ -39,11 +43,13 @@ Example of a measurement for non-MCS kernel. Run #1 on Sabre (file sabre-nomcs-o
 
 </br>
 
-   - Armv8-A
+##### 2.2 Armv8-A
 
 The mentioned "every 8-th" pattern was not found here. On the contrary, every 8-th sample was few cycles less then neighbouring ones.</br>
-"Tail pattern": 2 - 3 tailing samples were considerably higher than others for both MCS and non-MCS kernels. Further experiments showed that the increased tailing samples don't depend on number of measured samples, the "tail" always takes place.
-"Head pattern". We see up to 4 first increased measurements for MCS kernel, but it happened in 2 cases: 1st and 9th runs out of 10. As for non-MCS kernels there are always 21-23 first increased measurements take place before the process stabilizes.
+
+"Tail pattern": 2 - 3 tailing samples were considerably higher than others for both MCS and non-MCS kernels. Further experiments showed that the increased tailing samples didn't depend on number of measured samples, the "tail" always took place.</br>
+
+"Head pattern". We see up to 4 first increased measurements for MCS kernel, but it happened in 2 casesout of 10: 1st and 9th. As for non-MCS kernels, there are always 21-23 first increased measurements take place before the process stabilizes.
 
 Example of a measurement for MCS kernel. Run #1 on tx1a (file tx1a-mcs-old-1.log)
 
@@ -57,14 +63,34 @@ Example of a measurement for non-MCS kernel.  Run #1 on tx1a (file tx1a-nomcs-ol
 </br>
 
 
-   - Risc-V
+##### 2.3 Risc-V
 
 "Every 8-th" pattern was not found here. Rather sporadic increased measurements or in some cases series of 2-3 increased measurements.
+
+Example of a measurement for MCS kernel.  Run #1 on hifive1 (file hifive-mcs-old-1.log)
+
+> {"Benchmark": "Signal to high prio thread", "Results": [{"Min": 2433, "Max": 2606, "Mean": 2448.3200000000002, "Stddev": 16.453178133937246, "Variance": 268.0, "Mode": 2447.0, "Median": 2447.0, "1st quantile": 2447.0, "3rd quantile": 2447.0, "Samples": 100, "Raw results": [2462, 2446, 2446, 2446, 2446, 2446, 2446, 2449, 2606, 2444, 2436, 2433, 2446, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2478, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447, 2447, 2447, 2447, 2443, 2447, 2447, 2447, 2447]}]}
+
+Example of a measurement for non-MCS kernel.  Run #1 on hifive1 (file hifive-nomcs-old-1.log)
+
+> {"Benchmark": "Signal to high prio thread", "Results": [{"Min": 909, "Max": 953, "Mean": 930.75999999999999, "Stddev": 14.412396459894229, "Variance": 205.63999999999999, "Mode": 944.0, "Median": 941.0, "1st quantile": 915.0, "3rd quantile": 944.0, "Samples": 100, "Raw results": [942, 919, 953, 953, 951, 909, 940, 946, 936, 913, 935, 915, 944, 915, 944, 919, 944, 915, 944, 915, 944, 915, 944, 919, 944, 915, 944, 915, 944, 915, 944, 919, 944, 915, 944, 915, 944, 915, 944, 919, 944, 915, 944, 915, 944, 915, 944, 919, 944, 915, 944, 915, 944, 915, 944, 919, 944, 915, 944, 915, 944, 915, 944, 919, 944, 915, 944, 915, 944, 915, 944, 919, 944, 915, 944, 915, 944, 915, 944, 919, 944, 915, 944, 915, 944, 915, 944, 919, 944, 915, 944, 915, 944, 915, 944, 943, 944, 915, 944, 915]}]}
+
+</br>
     
-   - x86_64
+##### 2.4 x86_64
 
 For traditional kernel, there are number of sporadic increased measurements. No "every 8-th" or other patterns were not found.
 
 For MCS kernel, there are first 22-25 recorded measurements are steadily high, more than 200 cycles. No "every 8-th" or other patterns were not found.
 
+Example of a measurement for MCS kernel.  Run #1 on haswell4 (file haswell4-mcs-old-1.log)
 
+> {"Benchmark": "Signal to high prio thread", "Results": [{"Min": 943, "Max": 1303, "Mean": 1010.59, "Stddev": 98.545738752432243, "Variance": 9614.1499999999996, "Mode": 952.0, "Median": 968.0, "1st quantile": 952.0, "3rd quantile": 977.0, "Samples": 100, "Raw results": [1188, 1188, 1185, 1182, 1182, 1185, 1191, 1213, 1182, 1191, 1182, 1185, 1182, 1182, 1191, 1188, 1185, 1182, 1182, 1185, 1191, 1303, 1013, 1022, 952, 946, 952, 977, 949, 946, 943, 949, 974, 955, 971, 949, 943, 974, 949, 968, 943, 943, 968, 943, 943, 968, 943, 943, 968, 943, 943, 968, 943, 943, 977, 949, 977, 949, 952, 974, 952, 974, 952, 974, 952, 952, 977, 952, 977, 952, 952, 949, 977, 949, 952, 974, 952, 974, 952, 977, 952, 952, 977, 952, 977, 952, 952, 949, 952, 974, 952, 974, 952, 949, 977, 974, 952, 952, 977, 952]}]}
+
+Example of a measurement for non-MCS kernel.  Run #1 on haswell4 (file haswell4-nomcs-old-1.log)
+
+> {"Benchmark": "Signal to high prio thread", "Results": [{"Min": 698, "Max": 732, "Mean": 718.41999999999996, "Stddev": 11.86966254317657, "Variance": 139.47999999999999, "Mode": 726.0, "Median": 726.0, "1st quantile": 704.0, "3rd quantile": 726.0, "Samples": 100, "Raw results": [732, 707, 704, 704, 704, 704, 704, 704, 704, 701, 701, 726, 729, 729, 726, 729, 723, 726, 729, 726, 726, 726, 726, 726, 726, 726, 726, 726, 726, 726, 726, 729, 726, 729, 726, 729, 726, 729, 729, 726, 726, 723, 729, 698, 701, 698, 704, 701, 704, 701, 698, 729, 698, 726, 723, 729, 729, 726, 726, 723, 729, 723, 726, 723, 726, 729, 701, 698, 698, 701, 698, 704, 698, 704, 704, 701, 701, 698, 704, 723, 726, 723, 729, 726, 729, 726, 723, 726, 723, 729, 723, 729, 729, 726, 726, 723, 726, 723, 726, 723]}]}
+
+</br>
+
+Next > Developments 
