@@ -47,7 +47,7 @@ void low_prio_signal_fn(int argc, char **argv)
 ```
 </br>
 
-The raw results published in `data-[platform]-...` folders of this reposotory. You need files that contain `old-delay` in their names.
+The raw results published in `data-[arch]-...` folders of this reposotory. You need files that contain `old-delay` in their names.
 (I took measurements with the empty loop switched on for other platforms as well.)
 
 </br>
@@ -63,7 +63,8 @@ and somewhat worse than "Loop delay" for Armv8-A.
 Important factor when choosing which methodology to improve: the more code and the more branches is contained inside the measuring loop
 the more instruction cache events affect measured latencies.
 
-The raw results published in `data-[platform]-...` folders of this reposotory. You need files that contain `new` in their names.
+The raw results published in `data-[arch]-...` folders of this reposotory. You need files that contain `new` in their names.
+(I took measurements with Early Processing methodology for other platforms as well.)
 
 </br>
 
@@ -71,19 +72,33 @@ The raw results published in `data-[platform]-...` folders of this reposotory. Y
 
 </br>
 
-I added a parameter "number of tail samples to skip" and measured latencies.  
+I added a parameter "number of tail samples to skip" and measured latencies. For MCS kernel we see decent values;
+for non-MCS kernel the latencies didn't change, because "head pattern" was not solved.
 
 
+The raw results published in `data-armv8-...` in files containing `untailed` in their names.
 
 
+##### 3.4 Comparisons in Tables
+
+</br>
+
+Parameters min, max, mean, and standard deviation for 10 runs are collected into the tables.
 
 
-Parameters of the 10 runs are collected into the tables:
+Comparison tables</br>
+`"Late Processing" ("old" methodology)` VS `"Late Processing" with the delay` VS `"Early Processing" (new methodology)`</br>
+are in the following pdf files
 
    - [Tables for Arm](https://github.com/malus-brandywine/sel4bench-task-04.04.2022/blob/main/data-tables/MethodologiesComparison-Arm-03.11.2022-tables.pdf)
    - [Tables for Risc-V](https://github.com/malus-brandywine/sel4bench-task-04.04.2022/blob/main/data-tables/MethodologiesComparison-RISCV-03.15.2022-tables.pdf)
    - [Tables for x86_64](https://github.com/malus-brandywine/sel4bench-task-04.04.2022/blob/main/data-tables/MethodologiesComparison-x86_64-03.16.2022-tables.pdf)
 
+Comparison tables</br>
+`"Late Processing" ("old" methodology)` VS `"Late Processing" with the delay` VS `"Late Processing", untailed`</br>
+are collected this pdf files
+
+   - [Table for Armv8](https://github.com/malus-brandywine/sel4bench-task-04.04.2022/blob/main/data-tables/MethodologiesComparison-II-Armv8-04.04.2022-tables.pdf)
 
 
 
