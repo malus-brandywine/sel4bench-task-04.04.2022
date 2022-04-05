@@ -7,13 +7,13 @@
 
 </br>
 
-The solution (by Shane Kadish) to add emply loop delay into measuring loop rectified "every 8-th" pattern for Armv7
+The solution (by Shane Kadish) to add emply loop delay into measuring loop rectified "every 8-th" pattern problem for Armv7
 and improved latencies for Armv8.</br>
 
 The code of the empty loop: `for( volatile int j = 0; j < 150; j++){}`
 
 Further experiments showed that it's the combination of stores/loads issued by this code engaded cache 
-operations. It has nothing to do with clock cycles elapsed between recording current sample and starting the new measurement cycle.
+operations. It has nothing to do with clock cycles elapsed between recording the current sample and starting the new measurement cycle.
 
 The code with the "delay" (sel4bench/apps/signal/src/main.c):
 
@@ -73,13 +73,13 @@ The raw results published in `data-[arch]-...` folders of this reposotory. You n
 </br>
 
 I added a parameter "number of tail samples to skip" and measured latencies. For MCS kernel we see decent values;
-for non-MCS kernel the latencies didn't change, because "head pattern" was not solved.
+for non-MCS kernel the latencies didn't change, because "head pattern" was not resolved.
 
 
-The raw results published in `data-armv8-...` in files containing `untailed` in their names.
+The raw results published in `data-armv8-...` folders, in files containing `untailed` in their names.
 
 
-##### 3.4 Comparisons in Tables
+##### 3.4 Comparisons Tables
 
 </br>
 
@@ -88,7 +88,7 @@ Parameters min, max, mean, and standard deviation for 10 runs are collected into
 
 Comparison tables</br>
 `"Late Processing" ("old" methodology)` VS `"Late Processing" with the delay` VS `"Early Processing" (new methodology)`</br>
-are in the following pdf files
+are in the following pdf files:
 
    - [Tables for Arm](https://github.com/malus-brandywine/sel4bench-task-04.04.2022/blob/main/data-tables/MethodologiesComparison-Arm-03.11.2022-tables.pdf)
    - [Tables for Risc-V](https://github.com/malus-brandywine/sel4bench-task-04.04.2022/blob/main/data-tables/MethodologiesComparison-RISCV-03.15.2022-tables.pdf)
@@ -96,7 +96,7 @@ are in the following pdf files
 
 Comparison tables</br>
 `"Late Processing" ("old" methodology)` VS `"Late Processing" with the delay` VS `"Late Processing", untailed`</br>
-are collected this pdf files
+is in this pdf file:
 
    - [Table for Armv8](https://github.com/malus-brandywine/sel4bench-task-04.04.2022/blob/main/data-tables/MethodologiesComparison-II-Armv8-04.04.2022-tables.pdf)
 
