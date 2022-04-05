@@ -109,9 +109,9 @@ Example of a measurement for non-MCS kernel.  Run #1 on hifive1 (file hifive-nom
     
 ##### 2.4 x86_64
 
-For traditional kernel, there are number of sporadic increased measurements. No "every 8-th" or other patterns were not found.
+"Head pattern". For MCS kernel, there are first 22-25 recorded measurements are steadily high, more than 200 cycles. No "every 8-th" or other patterns were not found.
 
-For MCS kernel, there are first 22-25 recorded measurements are steadily high, more than 200 cycles. No "every 8-th" or other patterns were not found.
+For traditional kernel, there are number of sporadic increased measurements. No "every 8-th" or other patterns were not found.
 
 Example of a measurement for MCS kernel.  Run #1 on haswell4 (file haswell4-mcs-old-1.log)
 
