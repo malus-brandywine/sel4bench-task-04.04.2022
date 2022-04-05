@@ -17,7 +17,7 @@ It would allow to calculate parameters variance, standard deviation and mean pos
 </br>
 
 
-#### 2. Analysis of raw data
+#### 2. Analysis of raw data received with current measuring methodology ("Late Processing")
 
 I made a check of the raw data for the available architectures.</br>
 
