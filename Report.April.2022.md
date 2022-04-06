@@ -129,6 +129,4 @@ Example of a measurement for non-MCS kernel.  Run #1 on haswell4 (file haswell4-
 
 </br>
 
-</br>
-
-Next > [Developments](https://github.com/malus-brandywine/sel4bench-task-04.04.2022/blob/main/Developments.April.2022.md) 
+Continued on > [Developments](https://github.com/malus-brandywine/sel4bench-task-04.04.2022/blob/main/Developments.April.2022.md) 
