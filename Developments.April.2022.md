@@ -68,11 +68,6 @@ The raw results published in `data-[arch]-...` folders of this reposotory. You n
 
 </br>
 
-Sources of the implementation is in 
-[`signal.task` branch of malus-brandywine's fork](https://github.com/malus-brandywine/sel4bench/tree/signal.task)
-
-</br>
-
 ##### 3.3 "Untailing" to address "Tail pattern" for Armv8-A
 
 </br>
